@@ -1,0 +1,11 @@
+# Add this file to keep your secrets secure
+appsettings.local.json
+*.secret.json
+
+# Environment files  
+.env
+.env.local
+.env.production
+
+# Azure credentials
+azure.json
