@@ -26,7 +26,7 @@ Demonstrates Azure Blob Storage access using **Entra ID App Registration** authe
 
 ## Quick Start
 
-### 1. Clone Repository
+### 1. Clone Repository(GitHub)
 ```bash
 git clone https://github.com/ibnehussain/msal-demo.git
 cd msal-demo
