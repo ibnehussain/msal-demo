@@ -26,24 +26,95 @@ Demonstrates Azure Blob Storage access using **Entra ID App Registration** authe
 
 ## Quick Start
 
+### 1. Clone Repository
+```bash
+git clone https://github.com/ibnehussain/msal-demo.git
+cd msal-demo
+```
+
+### 2. Install Dependencies
+```bash
+# Restore packages for both projects
+dotnet restore ConsoleApp.ManagedIdentity/ConsoleApp.ManagedIdentity.csproj
+dotnet restore ConsoleApp.AppRegistration/ConsoleApp.AppRegistration.csproj
+```
+
+### 3. Run Applications
+
 Each application folder contains its own README.md with detailed setup and usage instructions.
 
-### Managed Identity App
+#### Managed Identity App
 ```bash
 cd ConsoleApp.ManagedIdentity
+dotnet build
 dotnet run -- --storage-account <account-name> --container <container-name>
 ```
 
-### App Registration App
+#### App Registration App
 ```bash
 cd ConsoleApp.AppRegistration
 # Set environment variables first (see README.md)
+dotnet build
 dotnet run
 ```
 
 ## Prerequisites
 
-- .NET 8.0 SDK
+### Install .NET 8.0 SDK
+
+#### Windows
+```powershell
+# Option 1: Download from Microsoft
+# Visit: https://dotnet.microsoft.com/download/dotnet/8.0
+
+# Option 2: Using Chocolatey
+choco install dotnet-8.0-sdk
+
+# Option 3: Using winget
+winget install Microsoft.DotNet.SDK.8
+```
+
+#### Linux (Ubuntu/Debian)
+```bash
+# Add Microsoft package repository
+wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt update
+
+# Install .NET SDK
+sudo apt install -y dotnet-sdk-8.0
+```
+
+#### macOS
+```bash
+# Option 1: Using Homebrew
+brew install dotnet
+
+# Option 2: Download from Microsoft
+# Visit: https://dotnet.microsoft.com/download/dotnet/8.0
+```
+
+### Verify Installation
+```bash
+dotnet --version
+# Should output: 8.0.x
+```
+
+### Install Project Dependencies
+
+After cloning the repository, restore NuGet packages for each project:
+
+```bash
+# For Managed Identity app
+cd ConsoleApp.ManagedIdentity
+dotnet restore
+
+# For App Registration app  
+cd ../ConsoleApp.AppRegistration
+dotnet restore
+```
+
+### Azure Requirements
 - Azure Storage Account with appropriate RBAC permissions
 - For Managed Identity: Azure resource with Managed Identity enabled
 - For App Registration: Entra ID App Registration with client secret
